@@ -1,7 +1,8 @@
 function hasClass(el, cls) {
+  cls = cls.replace(/\s+/g, '')
   if (!el || !cls) return false
 
-  return el.className.indexOf(cls.replace(' ', '')) >= 0
+  return el.className.indexOf(cls) >= 0
 }
 
 function addClass(el, cls = '') {
