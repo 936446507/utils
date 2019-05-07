@@ -7,6 +7,6 @@ Number.prototype.toFixed = function (len) {
   for (let i = 0; i < len; i++) {
     result += decimal[i] ? decimal[i] : '0'
   }
-  console.log(result)
+
   return result
 }
