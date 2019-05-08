@@ -1,26 +1,26 @@
-function hasClass(el, cls) {
-  cls = cls.replace(/\s+/g, '')
+export function hasClass(el, cls) {
   if (!el || !cls) return false
 
   return el.className.indexOf(cls) >= 0
 }
 
-function addClass(el, cls = '') {
+export function addClass(el, cls = '') {
   if (!el) return false
-  const classes = cls.match(/\w+/g) || []
+  const classes = cls.split(' ').filter(item => item)
+  const curClass = el.className.split(' ').filter(item => item)
 
   el.className = classes.reduce((className, cur) => {
     if (!hasClass(el, cur)) {
       className.push(cur)
     }
     return className
-  }, [...classes]).join(' ')
+  }, [...curClass]).join(' ')
 }
 
-function removeClass(el, cls = '') {
+export function removeClass(el, cls = '') {
   if (!el) return false
-  const curClass = el.className.match(/\w+/g)
-  const classes = cls.match(/\w+/g) || []
+  const classes = cls.split(' ').filter(item => item)
+  const curClass = el.className.split(' ').filter(item => item)
 
   el.className = classes.reduce((className, cur) => {
     if (hasClass(el, cur)) {
@@ -34,4 +34,15 @@ function removeClass(el, cls = '') {
     }
     return className
   }, [...curClass]).join(' ')
+}
+
+export function getStyle(ele) {
+  let style = null;
+  if (window.getComputedStyle) {
+    style = window.getComputedStyle(ele, null);
+  } else {
+    style = ele.currentStyle;
+  }
+
+  return style;
 }
