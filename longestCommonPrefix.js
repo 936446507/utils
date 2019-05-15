@@ -10,11 +10,11 @@
 
 function longestCommonPrefix(strs) {
   if (strs.length === 0) return ''
-
-  const str = strs.shift()
+  const strArr = strs.slice()
+  const str = strArr.shift()
 
   for (let i = 0; i < str.length; i++) {
-    const isSame = strs.every(item => str[i] === item[i])
+    const isSame = strArr.every(item => str[i] === item[i])
     if (!isSame) {
       return str.substring(0, i)
     }
