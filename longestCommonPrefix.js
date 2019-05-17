@@ -24,7 +24,7 @@ function longestCommonPrefix(strs) {
 }
 
 function longestCommonPrefix(strs) {
-  if (strs.length === 0) return ''
+  if (strs.length < 2) return strs[0] || '';
   // 对比两个字符串遍历最短字符串取出公共前缀
   const findCommonPrefix = (leftStr, rightStr) => {
     const minLenStr = leftStr.length > rightStr.length ? rightStr : leftStr
@@ -52,8 +52,10 @@ function longestCommonPrefix(strs) {
   return findLongestCommonPrefix(strs, 0, strs.length - 1)
 }
 
+longestCommonPrefix(["flower", "flow", "flight", 'flww'])
+
 // 二分查找
-const longestCommonPrefix = (strs) => {
+function longestCommonPrefix(strs) {
   if (!strs) return '';
 
   // 数组长度小于2，直接返回空
