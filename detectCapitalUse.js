@@ -8,3 +8,18 @@ function detectCapitalUse (word) {
 
   return num === word.length || num <= 1
 }
+
+function detectCapitalUse (word) {
+  let firstIsLower = false
+
+  const str = word.replace(/[a-zA-Z]/, function(match) {
+    firstIsLower = /[a-z]/.test(match)
+    return ''
+  })
+  if (firstIsLower) {
+    return /^[a-z]*$/.test(str)
+  } else {
+    return /^[a-z]*$|^[A-Z]*$/.test(str)
+  }
+
+}
