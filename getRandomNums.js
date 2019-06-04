@@ -8,7 +8,7 @@ function getUniqueNum(min, max, arr) {
   if (arr.indexOf(num) < 0) {
     return num
   }
-  getUniqueNum(min, max, arr)
+  return getUniqueNum(min, max, arr)
 }
 
 function getUniqueNums(min, max, len  = max - min + 1) {
