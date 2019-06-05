@@ -44,8 +44,7 @@ const  exclusiveTime = (n, logs) => {
 
   logs.forEach(log => {
     // 取出当前函数调用信息
-    const [ id, type, time ] = log.split(':').map(item => /\d+/.test(item) ? Number(item) : item)
-
+    const [ id, type, time ] = log.split(':')
     if (type === 'start') {
       // 函数开始运行，加入调用栈，存储函数信息
       stack.unshift({ id, time })
