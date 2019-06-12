@@ -34,7 +34,7 @@
  * @param {string[]} logs
  * @return {number[]}
  */
-const  exclusiveTime = (n, logs) => {
+const exclusiveTime = (n, logs) => {
   // 函数运行结果
   const result = new Array(n).fill(0)
   // 保存函数调用子函数的运行时间
@@ -58,6 +58,7 @@ const  exclusiveTime = (n, logs) => {
       sum[funcId] = 0
 
       if (stack.length > 0) {
+        // 更新子函数运行时长
         sum[stack[0].id] += duraction
       }
     }
