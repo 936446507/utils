@@ -31,7 +31,7 @@ const shiftingLetters = (S, shifts) => {
     const increment = S.charCodeAt(index) - aUnicode + step;
     return aUnicode + (increment > letterNums ? increment % letterNums : increment);
   };
-  // 所有移位次数综合
+  // 所有移位次数总和
   const total = shifts.reduce((result, shift) => result + shift, 0);
   // 移位后字符对应unicode
   const unicodes = [transformUnicode(total, 0)];
