@@ -45,4 +45,34 @@ const shiftingLetters = (S, shifts) => {
   return String.fromCharCode(...unicodes);
 };
 
-shiftingLetters("abc", [3,5,9])
+const yuque = require('./yuque');
+// memory
+yuque.memory('start');
+if (shiftingLetters('abc', [3, 5, 9]) !== 'rpl') console.error('[ERROR]', `input abc [3,5,9], ouput ${shiftingLetters('abc', [3, 5, 9])}, actual rpl`);
+if (shiftingLetters('xrdofd', [70,41,71,72,73,84]) !== 'surjgj') console.error('[ERROR]', `input xrdofd [70,41,71,72,73,84], ouput ${shiftingLetters('xrdofd', [70,41,71,72,73,84])}, actual surjgj`);
+shiftingLetters(createS(1000), createShifts(1000));
+yuque.memory('end');
+
+// total time
+const data = [];
+for (let i = 0; i < 1000; i += 1) {
+  data.push([createS(10000), createShifts(10000)]);
+}
+yuque.consumeTime(shiftingLetters, data);
+
+function createS(times = 1000) {
+  let str = '';
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  for (let i = 0; i < times; i += 1) {
+    str += letters[Math.floor(Math.random() * 26)];
+  }
+  return str;
+}
+function createShifts(times = 1000) {
+  let arr = [];
+  const max = 10 ** 9;
+  for (let i = 0; i < times; i += 1) {
+    arr.push(Math.floor(Math.random() * max));
+  }
+  return arr;
+}
