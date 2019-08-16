@@ -5,11 +5,20 @@
  */
 var combine = function (n, k) {
   const result = [];
-  if (n < k) return result;
+  const temp = [];
 
-  const end = n.length - k;
-  let curIndex = 0;
-  for (let i = curIndex; i < end; i++) {
-
+  function dfs(index, array) {
+    if (temp.length === k) {
+      result.push(temp.slice())
+    }
+    for (let i = index; i <= n; i++) {
+      array.push(i);
+      dfs(i + 1, array);
+      array.pop();
+    }
   }
+  dfs(1, temp);
+  return result;
 };
+
+combine(4, 2);
