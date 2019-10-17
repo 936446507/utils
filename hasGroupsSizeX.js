@@ -9,7 +9,7 @@ function gcd(a, b) {
 
 var hasGroupsSizeX = function(deck) {
   if (deck.length < 2) return false;
-  const counts = {}
+  const counts = {};
   for (let item of deck) {
     counts[item] = counts[item] ? counts[item] + 1 : 1;
   }
